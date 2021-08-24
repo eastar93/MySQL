@@ -3,28 +3,43 @@ CREATE TABLE users(
     upw varchar(20) not null,
     uname varchar(10) not null,
 	uemail varchar(45) not null,
-    subject varchar(50)
+    subject varchar(50),
+    htmlcount INT,
+    csscount INT,
+    javacount INT,
+    jspcount INT
     );
+
+INSERT into users VALUES('test', '1234', 'user', 'user@test.com', 'html, java', 0, 0, 0, 0);
+
+SELECT * from users;
+
+DROP TABLE users;
     
 create table question(
-    qcode integer auto_increment primary key,
+    qcode integer primary key,
     question varchar(60)
 );
-
-alter table question auto_increment=1000;
 
 create table correct(
     ccode integer auto_increment primary key,
     correct varchar(30)
 );
-alter table correct auto_increment=1000;
     
-create table answer(
-    acode integer auto_increment primary key,
-    answer varchar(30)
-);
-alter table answer auto_increment=1000;
-    
+CREATE TABLE project.answer (
+  acode INT NOT NULL,
+  accacode INT NOT NULL,
+  anuid VARCHAR(20) NOT NULL,
+  answer VARCHAR(30) NULL,
+  solvedate DATETIME NOT NULL,
+  PRIMARY KEY (acode),
+  INDEX anuid_idx (anuid ASC) VISIBLE,
+  CONSTRAINT anuid
+    FOREIGN KEY (anuid)
+    REFERENCES project.users (uid)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
     
 CREATE TABLE board (
 	  no INT primary key not null AUTO_INCREMENT,
@@ -34,4 +49,3 @@ CREATE TABLE board (
 	  bcontent varchar(2000) not null,
       bhit INT not null DEFAULT 0 
 	  );
-      
