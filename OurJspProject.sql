@@ -22,7 +22,7 @@ create table question(
 );
 
 create table correct(
-    ccode integer auto_increment primary key,
+    ccode integer primary key,
     correct varchar(30)
 );
     
