@@ -26,19 +26,12 @@ create table correct(
     correct varchar(30)
 );
     
-CREATE TABLE project.answer (
-  acode INT NOT NULL,
-  accacode INT NOT NULL,
-  anuid VARCHAR(20) NOT NULL,
+CREATE TABLE answer (
+  auto_acode INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  qcode INT NOT NULL,
   answer VARCHAR(30) NULL,
-  solvedate DATETIME NOT NULL,
-  PRIMARY KEY (acode),
-  INDEX anuid_idx (anuid ASC) VISIBLE,
-  CONSTRAINT anuid
-    FOREIGN KEY (anuid)
-    REFERENCES project.users (uid)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  solvedate DATETIME NOT NULL
+  );
 
     
 CREATE TABLE board (
