@@ -33,6 +33,13 @@ create table correct(
     correct varchar(30)
 );
     
+CREATE TABLE answer (
+  auto_acode INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  qcode INT NOT NULL,
+  answer VARCHAR(30) NULL,
+  solvedate DATETIME NOT NULL
+  );
+
 CREATE TABLE board (
 	  no INT primary key not null AUTO_INCREMENT,
 	  btype varchar(20) not null,
